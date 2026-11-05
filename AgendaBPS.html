@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agenda de Orientación · Escuela Taller Baessipo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F6F9;--surf:#fff;--ink:#17212E;--mut:#647084;--line:#E3E8EF;--acc:#3267DD;--accs:#E8EEFD;--chip:#EEF2F7;--sh:0 1px 2px rgba(20,30,50,.06),0 8px 24px rgba(20,30,50,.06);color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F141B;--surf:#171E28;--ink:#E8EDF4;--mut:#8D99AB;--line:#263040;--acc:#7DA2FF;--accs:#1E2A44;--chip:#0C121A;--sh:0 8px 24px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F141B;--surf:#171E28;--ink:#E8EDF4;--mut:#8D99AB;--line:#263040;--acc:#7DA2FF;--accs:#1E2A44;--chip:#0C121A;--sh:0 8px 24px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 Figtree,system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+header{display:flex;align-items:center;gap:18px;padding:14px 28px;background:var(--surf);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.brand{font-weight:700;font-size:17px;letter-spacing:-.01em}.brand small{display:block;font-weight:500;color:var(--mut);font-size:12.5px}
+nav{display:flex;align-items:center;gap:5px;margin-left:12px}
+nav button{border:0;background:none;padding:9px 14px;border-radius:8px;font-weight:600;color:var(--mut)}
+nav button[aria-selected=true]{background:var(--accs);color:var(--acc)}
+.icon-tab{display:grid;place-items:center;width:38px;height:38px;padding:0!important}.icon-tab svg{width:19px;height:19px;stroke:currentColor;stroke-width:2;fill:none}.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sp{flex:1}
+.seg{display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:2px}
+.seg button{border:0;background:none;padding:6px 12px;border-radius:7px;font-weight:600;color:var(--mut);font-size:14px}
+.seg button[aria-pressed=true]{background:var(--surf);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.btn{border:1px solid var(--line);background:var(--surf);padding:8px 14px;border-radius:9px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
+:root[data-theme="dark"] .btn.p{color:#0F141B}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.p{color:#0F141B}}
+.btn.d{color:#C0392B}
+main{padding:22px 28px 40px;max-width:1500px;margin:0 auto}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+h1{font-size:22px;margin:0 8px 0 6px;letter-spacing:-.02em;min-width:190px}
+.legendrow{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.legend{display:flex;gap:7px 15px;flex-wrap:wrap}
+.layers{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.layers .note{margin-right:2px}
+.lg{display:inline-flex;align-items:center;gap:7px;border:0;background:none;padding:3px 4px;color:var(--ink);font-size:13px;border-radius:6px}
+.lg[aria-pressed=false]{opacity:.38;text-decoration:line-through}
+i.sq{display:inline-block;width:13px;height:13px;border-radius:3px;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.cal{background:var(--surf);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);overflow:hidden}
+.scroll{overflow-x:auto}.grid{display:grid;grid-template-columns:repeat(7,minmax(138px,1fr));min-width:980px}
+.dh{padding:10px 12px;font-weight:600;font-size:13px;color:var(--mut);border-bottom:1px solid var(--line);background:var(--bg)}
+.day{min-height:184px;padding:8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
+.grid.wk .day{min-height:520px}
+.day:nth-child(7n){border-right:0}
+.day.out{background:var(--bg)}.day.out .n{opacity:.45}
+.n{font-size:13px;font-weight:700;width:27px;height:27px;display:grid;place-items:center;border-radius:50%;margin-bottom:3px}
+.day.today .n{background:var(--acc);color:#fff}
+.chip{display:flex;align-items:center;gap:8px;width:100%;min-height:28px;text-align:left;border:1px solid transparent;background:var(--chip);border-radius:7px;padding:4px 7px;font-size:13px;font-weight:600;line-height:1.25}
+.chip:hover{border-color:var(--acc);background:var(--accs)}
+.chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip.sel{border-color:var(--acc)}
+.more{border:0;background:none;color:var(--mut);font-size:12px;text-align:left;padding:2px 6px}
+aside{position:fixed;top:0;right:0;bottom:0;width:min(390px,100%);background:var(--surf);border-left:1px solid var(--line);box-shadow:-12px 0 32px rgba(20,30,50,.14);padding:calc(24px + env(safe-area-inset-top,0px)) 24px 24px;overflow:auto;transform:translateX(105%);transition:transform .25s ease;z-index:20}
+aside.open{transform:none}
+aside h2{margin:10px 0 4px;font-size:20px;letter-spacing:-.01em}
+.tag{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;background:var(--bg);padding:4px 10px;border-radius:99px}
+.meta{color:var(--mut);margin:0 0 18px;text-transform:capitalize-first}
+aside h3{font-size:13px;margin:18px 0 8px;color:var(--mut);font-weight:600}
+aside ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+aside li{padding:10px 12px;background:var(--bg);border-radius:9px;border-left:3px solid var(--k)}
+.x{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;border:0;background:none;font-size:24px;line-height:1;color:var(--mut)}
+.acts{display:flex;gap:8px;margin-top:24px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:14px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--sh)}
+.card .l{color:var(--mut);font-size:13px;font-weight:500}.card .v{font-size:34px;font-weight:700;letter-spacing:-.03em;margin-top:2px}.card .v small{font-size:16px;color:var(--mut);font-weight:600}
+.two{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px}
+@media(max-width:900px){.two{grid-template-columns:1fr}main{padding:16px}header{padding:12px 16px}}
+.card h3{margin:0 0 14px;font-size:15px}
+.chart{display:flex;align-items:flex-end;gap:6px;height:220px;border-bottom:1px solid var(--line)}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-width:0}
+.stk{display:flex;flex-direction:column-reverse;border-radius:4px 4px 0 0;overflow:hidden}
+.axis{display:flex;gap:6px;margin-top:6px;font-size:11.5px;color:var(--mut)}.axis span{flex:1;text-align:center;overflow:hidden;white-space:nowrap}
+.row{display:grid;grid-template-columns:18px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}.row .b{height:5px;border-radius:3px;background:var(--bg);margin-top:5px;overflow:hidden}.row .b i{display:block;height:100%}
+.row strong{font-variant-numeric:tabular-nums}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--surf);color:var(--ink);padding:24px;width:min(460px,94vw);box-shadow:0 24px 60px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(10,15,25,.45)}
+dialog h2{margin:0 0 16px;font-size:19px}
+label{display:block;font-size:13px;font-weight:600;color:var(--mut);margin-bottom:12px}
+label input,label select,label textarea{display:block;width:100%;margin-top:5px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);font-weight:400}
+.r2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.note{font-size:12.5px;color:var(--mut)}
+@media (prefers-reduced-motion:reduce){aside{transition:none}}
+
+/* Estilos de Autenticación y Perfil */
+.auth-overlay{position:fixed;inset:0;background:rgba(10,15,25,.75);backdrop-filter:blur(8px);display:grid;place-items:center;z-index:9999;padding:16px}
+.auth-card{background:var(--surf);border:1px solid var(--line);border-radius:20px;width:min(420px,100%);padding:30px 26px;box-shadow:0 20px 45px rgba(0,0,0,.35)}
+.auth-card h2{margin:12px 0 4px;font-size:21px;font-weight:700}
+.auth-error{background:#FEE2E2;color:#991B1B;padding:10px 12px;border-radius:8px;font-size:13px;font-weight:600;margin-bottom:14px;border:1px solid #FCA5A5}
+:root[data-theme="dark"] .auth-error{background:#450A0A;color:#FCA5A5;border-color:#7F1D1D}
+.auth-info-box{background:var(--chip);padding:10px 12px;border-radius:8px;font-size:12px;color:var(--mut);margin-top:16px}
+.user-badge{display:flex;align-items:center;gap:10px;font-size:13px;background:var(--chip);padding:4px 10px 4px 14px;border-radius:99px;border:1px solid var(--line)}
+.role-badge{font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px;text-transform:uppercase}
+.role-badge.admin{background:var(--accs);color:var(--acc)}
+.role-badge.direction{background:#FEF3C7;color:#92400E}
+:root[data-theme="dark"] .role-badge.direction{background:#78350F;color:#FDE68A}
+.readonly-notice{background:var(--chip);color:var(--mut);padding:8px 12px;border-radius:8px;font-size:12.5px;margin-bottom:12px;border:1px solid var(--line)}
+</style></head><body>
+<header>
+ <div class="brand">Agenda de Orientación<small>Escuela Taller Baessipo</small></div>
+ <nav role="tablist"><button role="tab" id="t-cal" aria-selected="true">Calendario</button><button role="tab" id="t-hrs" aria-selected="false">Horas trabajadas</button><button type="button" id="students">Alumnado</button><button class="icon-tab" role="tab" id="t-sch" aria-selected="false" aria-label="Calendario escolar" title="Calendario escolar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 3v4M17 3v4M3 10h18M8 14h2M14 14h2M8 18h2M14 18h2"></path></svg><span class="sr">Calendario escolar</span></button></nav>
+ <div class="sp"></div>
+ <div class="user-badge" id="u-badge">
+   <span id="u-name">...</span>
+   <span id="u-role" class="role-badge">...</span>
+   <button class="btn" id="logout-btn" title="Cerrar sesión" style="padding:4px 8px;font-size:12px">Salir</button>
+ </div>
+ <button class="btn p" id="add">+ Registrar actividad</button>
+</header>
+<main>
+ <section id="v-cal">
+  <div class="bar">
+   <button class="btn" id="prev" aria-label="Anterior">‹</button><button class="btn" id="next" aria-label="Siguiente">›</button><button class="btn" id="today">Hoy</button>
+   <h1 id="ttl"></h1><div class="sp"></div>
+   <div class="seg" id="vw"><button data-v="m" aria-pressed="true">Mes</button><button data-v="w" aria-pressed="false">Semana</button></div>
+  </div>
+  <div class="legendrow"><div class="legend" id="lg"></div><div class="layers" id="layers"><span class="note">Ver agenda</span><div class="seg"><button data-l="taller" aria-pressed="false">Agenda Alumnos</button><button data-l="orientacion" aria-pressed="false">Agenda Orientación</button></div></div></div>
+  <div class="cal"><div class="scroll"><div class="grid" id="grid"></div></div></div>
+ </section>
+ <section id="v-hrs" hidden>
+  <div class="bar">
+   <div class="seg" id="hm"><button data-h="w" aria-pressed="true">Semanal</button><button data-h="m" aria-pressed="false">Mensual</button><button data-h="t" aria-pressed="false">Total del programa</button></div>
+   <button class="btn" id="hp" aria-label="Anterior">‹</button><button class="btn" id="hn" aria-label="Siguiente">›</button><h1 id="hl"></h1><div class="sp"></div><button class="btn" id="report">Emitir informe</button>
+  </div>
+  <div class="kpis" id="kp"></div>
+  <div class="two"><div class="card"><h3 id="ch-t"></h3><div class="chart" id="ch"></div><div class="axis" id="ax"></div></div>
+  <div class="card"><h3>Desglose por actividad</h3><div id="bd"></div></div></div>
+ </section>
+ <section id="v-sch" hidden>
+  <div class="bar"><h1>Calendario escolar · Cádiz</h1></div>
+  <div class="card"><h3>Referencia del calendario escolar 2026–2027</h3><p class="note">Este calendario se muestra como referencia y no modifica automáticamente la programación de la Escuela Taller.</p><div id="school"></div></div>
+ </section>
+</main>
+<aside id="pn" aria-live="polite"></aside>
+
+<!-- Modal Registrar Actividad -->
+<dialog id="dg"><form id="fm" novalidate>
+ <h2 id="dgt">Registrar actividad</h2>
+ <label>Tipo<select id="f-type"></select></label>
+ <div class="r2"><label>Fecha<input type="date" id="f-date" required></label><label>Inicio<input type="time" id="f-s"></label><label>Fin<input type="time" id="f-e"></label></div>
+ <label id="sl" hidden>Alumno/a (nombre y primer apellido)<input id="f-student" list="student-options" maxlength="60"></label><datalist id="student-options"></datalist>
+ <label id="pl" hidden>Participantes (nombre y primer apellido, uno por línea)<textarea id="f-participants" rows="3"></textarea></label>
+ <label id="tl">Título (nombre del evento, actividad o grupo…)<input id="f-title" required maxlength="60"></label>
+ <label id="gl">Invitados (uno por línea)<textarea id="f-g" rows="2"></textarea></label>
+ <label>Temas tratados (uno por línea)<textarea id="f-t" rows="4"></textarea></label>
+ <div class="acts"><button class="btn p" type="submit">Guardar</button><button class="btn" type="button" id="cancel">Cancelar</button></div>
+</form></dialog>
+
+<!-- Modal Alumnado -->
+<dialog id="sd"><form id="sf" novalidate>
+ <h2>Alumnado</h2><p class="note">Listado provisional de la Agenda. Se integrará en el CRM cuando lo construyamos.</p>
+ <div id="s-readonly-note" class="readonly-notice" hidden>Modo de solo lectura: el alumnado solo puede ser gestionado por la cuenta de administración.</div>
+ <div id="s-create-box">
+  <label>Nombre y primer apellido<input id="s-name" maxlength="60" required></label>
+  <div class="acts" style="margin-top:4px"><button class="btn p" type="submit">Añadir alumno/a</button><button class="btn" type="button" id="s-close">Cerrar</button></div>
+ </div>
+ <div id="student-list" style="margin-top:18px"></div>
+</form></dialog>
+
+<!-- Modal Informes -->
+<dialog id="rd"><form id="rf" novalidate>
+ <h2>Informe de actividad de orientación</h2>
+ <p class="note">Selecciona el periodo y el tipo de informe que necesitas emitir.</p>
+ <div class="r2"><label>Desde<input type="date" id="r-from" required></label><label>Hasta<input type="date" id="r-to" required></label></div>
+ <label>Tipo de informe<select id="r-type"><option value="activity">Actividad de orientación</option><option value="tutoring">Índice de tutorías</option><option value="complete">Informe completo de actividad</option></select></label>
+ <label>Nivel de detalle<select id="r-detail"><option value="summary">Resumen profesional</option><option value="detail">Incluir desarrollo registrado de tutorías</option></select></label>
+ <label style="display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:500"><input type="checkbox" id="r-chart" checked style="width:auto;margin:0">Incluir gráfico de horas por día</label>
+ <label style="display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:500"><input type="checkbox" id="r-schedule" style="width:auto;margin:0">Incluir agenda del alumnado en el periodo</label>
+ <p class="note">El informe se abre localmente, listo para imprimir o guardar como PDF. No se envía ni se publica.</p>
+ <div class="acts"><button class="btn p" type="submit">Abrir informe</button><button class="btn" type="button" id="r-cancel">Cancelar</button></div>
+</form></dialog>
+
+<!-- Pantalla Flotante de Autenticación -->
+<div id="auth-screen" class="auth-overlay">
+  <div class="auth-card">
+    <div class="brand">Agenda de Orientación<small>Escuela Taller Baessipo</small></div>
+    <h2>Acceso al Sistema</h2>
+    <p class="note">Inicia sesión para gestionar o consultar la programación.</p>
+    <div id="auth-err" class="auth-error" hidden></div>
+    <form id="auth-form" novalidate style="margin-top:16px">
+      <label>Correo Electrónico
+        <input type="email" id="auth-email" placeholder="tu-correo@baessipo.es" required autocomplete="username">
+      </label>
+      <label>Contraseña
+        <input type="password" id="auth-pass" placeholder="••••••••" required autocomplete="current-password">
+      </label>
+      <div class="acts" style="margin-top:18px">
+        <button class="btn p" type="submit" style="width:100%;justify-content:center;padding:10px">Iniciar Sesión</button>
+      </div>
+      <div class="auth-info-box">
+        Acceso disponible para Administración (gestión total) y Dirección (solo consulta).
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// SERVICIO DE AUTENTICACIÓN Y ROLES
+const AUTH_USERS = [
+  {
+    email: 'isabel-oliva@outlook.es',
+    pass: 'AgendaBSP26',
+    name: 'Isabel Oliva',
+    role: 'admin' // Administrador: control total
+  },
+  {
+    email: 'direccion@baessipo.es',
+    pass: 'Direccion2026!',
+    name: 'Dirección',
+    role: 'direction' // Dirección: solo lectura
+  }
+];
+const AUTH_KEY = 'agenda_baessipo_session_v1';
+
+const Auth = {
+  user: null,
+  init() {
+    try {
+      const s = localStorage.getItem(AUTH_KEY);
+      if (s) this.user = JSON.parse(s);
+    } catch(e) {}
+    this.sync();
+  },
+  login(email, pass) {
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const u = AUTH_USERS.find(x => x.email.toLowerCase() === cleanEmail && x.pass === pass);
+    if (!u) return false;
+    this.user = { email: u.email, name: u.name, role: u.role };
+    try { localStorage.setItem(AUTH_KEY, JSON.stringify(this.user)); } catch(e) {}
+    this.sync();
+    return true;
+  },
+  logout() {
+    this.user = null;
+    try { localStorage.removeItem(AUTH_KEY); } catch(e) {}
+    this.sync();
+  },
+  canEdit() {
+    return this.user && this.user.role === 'admin';
+  },
+  sync() {
+    const screen = $('#auth-screen');
+    if (!this.user) {
+      screen.hidden = false;
+      $('#u-badge').hidden = true;
+      $('#add').hidden = true;
+      return;
+    }
+    screen.hidden = true;
+    $('#u-badge').hidden = false;
+    $('#u-name').textContent = this.user.name;
+    const badge = $('#u-role');
+    badge.className = 'role-badge ' + this.user.role;
+    badge.textContent = this.user.role === 'admin' ? 'Administración' : 'Dirección (Lectura)';
+    S.role = this.user.role === 'admin' ? 'o' : 'd';
+    render();
+    renderStudents();
+  }
+};
+
+const T={formacion:{n:'Formación',c:'#4B7FF1',a:1,layer:'taller'},practicas:{n:'Prácticas',c:'#18B8A5',a:1,layer:'taller'},vac_alu:{n:'Vacaciones alumnado',c:'#F0B323',a:1,layer:'taller'},festivo:{n:'Festivo',c:'#D4605B',a:1,layer:'taller'},
+admin:{n:'Trabajo administrativo',c:'#8292AA',h:1,o:1,layer:'orientacion'},tut_ind:{n:'Tutoría individual',c:'#9365DF',h:1,o:1,layer:'orientacion'},tut_grp:{n:'Tutoría grupal',c:'#E3489A',h:1,o:1,layer:'orientacion'},
+evento:{n:'Evento / masterclass',c:'#F47737',h:1,o:1,layer:'orientacion'},vac_or:{n:'Vacaciones orientadora',c:'#48B766',o:1,layer:'orientacion'},asuntos:{n:'Asuntos propios',c:'#B9713C',o:1,layer:'orientacion'}};
+const P0='2026-11-03',P1='2027-05-31',KEY='agenda_baessipo_v1',STUDENT_KEY='agenda_baessipo_students_v1';
+const pad=n=>String(n).padStart(2,'0'),iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()),pd=s=>new Date(s+'T00:00'),
+add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x},mon=d=>add(d,-((d.getDay()+6)%7)),
+esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),
+cap=s=>s[0].toUpperCase()+s.slice(1),hh=s=>{const[a,b]=s.split(':');return +a+b/60},
+dur=e=>e.start&&e.end?Math.max(0,hh(e.end)-hh(e.start)):0,fh=x=>(Math.round(x*10)/10).toString().replace('.',',');
+const TODAY=iso(new Date());
+function seed(){
+ const ev=[];let id=1;const A=(date,type,title,o={})=>ev.push({id:id++,date,type,title,topics:[],guests:[],...o});
+ const form=(dates,mod)=>dates.forEach(d=>A(d,'formacion',`Formación · ${mod}`));
+ const pract=dates=>dates.forEach(d=>A(d,'practicas','Prácticas'));
+ form(['2026-11-03'],'Examen 978 · 7 h'); form(['2026-11-04'],'978 · 7 h'); pract(['2026-11-05','2026-11-06']);
+ form(['2026-11-09','2026-11-10','2026-11-11'],'978 · 7 h'); pract(['2026-11-12','2026-11-13']);
+ form(['2026-11-16','2026-11-17','2026-11-18'],'978 · 7 h'); pract(['2026-11-19','2026-11-20']);
+ form(['2026-11-23','2026-11-24','2026-11-25'],'978 · 7 h'); pract(['2026-11-26','2026-11-27']); form(['2026-11-30'],'Examen 978 · 7 h');
+ form(['2026-12-01'],'Examen 978 · 7 h'); pract(['2026-12-02','2026-12-03','2026-12-04']); A('2026-12-08','festivo','Festivo'); pract(['2026-12-09','2026-12-10','2026-12-11']);
+ form(['2026-12-14','2026-12-15','2026-12-16'],'979 · 7 h'); pract(['2026-12-17','2026-12-18']); form(['2026-12-21','2026-12-22','2026-12-23'],'979 · 7 h'); pract(['2026-12-24','2026-12-25']);
+ A('2026-12-30','vac_alu','Vacaciones del alumnado'); A('2026-12-31','festivo','Festivo'); A('2027-01-01','festivo','Festivo'); A('2027-01-06','festivo','Festivo'); pract(['2027-01-07','2027-01-08']);
+ form(['2027-01-11','2027-01-12','2027-01-13'],'979 · 7 h'); pract(['2027-01-14','2027-01-15']); form(['2027-01-18','2027-01-19','2027-01-20'],'979 · 7 h'); pract(['2027-01-21','2027-01-22']); form(['2027-01-25','2027-01-26','2027-01-27'],'979 · 7 h'); pract(['2027-01-28','2027-01-29']);
+ for(let d=pd('2027-02-01');iso(d)<='2027-02-26';d=add(d,1)){const g=d.getDay();if(g>0&&g<6)A(iso(d),g<=3?'formacion':'practicas',g<=3?'Formación · 980 · 7 h':'Prácticas')}
+ form(['2027-03-01'],'Examen 980 · 6 h'); for(let d=pd('2027-03-02');iso(d)<='2027-03-24';d=add(d,1)){const g=d.getDay();if(g>0&&g<6)A(iso(d),g<=3?'formacion':'practicas',g<=3?'Formación · 515 · 7 h':'Prácticas')}
+ form(['2027-03-29'],'Examen 515 · 7 h'); form(['2027-03-30','2027-03-31'],'515 · 7 h'); pract(['2027-04-01','2027-04-02']);
+ form(['2027-04-05'],'Examen 516 · 7 h'); form(['2027-04-06'],'516 · 7 h'); form(['2027-04-07'],'Examen 981 · 2 h'); pract(['2027-04-08','2027-04-09']);
+ for(let d=pd('2027-04-12');iso(d)<='2027-04-30';d=add(d,1)){if(d.getDay()>0&&d.getDay()<6)A(iso(d),'practicas','Prácticas')}
+ for(let d=pd('2027-05-03');iso(d)<='2027-05-31';d=add(d,1)){if(d.getDay()>0&&d.getDay()<6)A(iso(d),'practicas','Prácticas · previsión pendiente de confirmar')}
+ return ev}
+let EV,STUDENTS=[],S={tab:'c',v:'m',cur:new Date('2026-11-03T00:00'),role:'o',layer:'all',hid:new Set(),sel:null,hm:'w',hc:new Date('2026-11-03T00:00')};
+function migrate(){
+ const e=EV.find(x=>x.date=='2026-11-04'&&x.type=='practicas'&&x.title=='Prácticas'&&!x.start&&!x.end);
+ if(e){e.type='formacion';e.title='Formación · 978 · 7 h';return true}return false
+}
+function load(){try{const r=localStorage.getItem(KEY);if(r){EV=JSON.parse(r);if(migrate())save();return}}catch(e){}EV=seed();save()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(EV))}catch(e){}}
+function loadStudents(){try{const r=localStorage.getItem(STUDENT_KEY);if(r)STUDENTS=JSON.parse(r)}catch(e){STUDENTS=[]}}
+function saveStudents(){try{localStorage.setItem(STUDENT_KEY,JSON.stringify(STUDENTS))}catch(e){}}
+function renderStudents(){
+ STUDENTS.sort((a,b)=>a.localeCompare(b,'es'));$('#student-options').innerHTML=STUDENTS.map(x=>`<option value="${esc(x)}"></option>`).join('');
+ const isReadOnly = !Auth.canEdit();
+ $('#s-create-box').hidden = isReadOnly;
+ $('#s-readonly-note').hidden = !isReadOnly;
+ $('#student-list').innerHTML=STUDENTS.length?`<div class="row" style="font-weight:600"><span></span><span>Alumnado registrado</span><span>${STUDENTS.length}</span></div>`+STUDENTS.map((x,i)=>`<div class="row"><span>${i+1}</span><span>${esc(x)}</span><span>${isReadOnly?'<span class="note">Solo lectura</span>':`<button class="btn" type="button" data-student-edit="${i}">Modificar</button> <button class="btn d" type="button" data-student-del="${i}">Eliminar</button>`}</span></div>`).join(''):'<p class="note">Aún no hay alumnado registrado.</p>'
+}
+window.addEventListener('storage',e=>{if(e.key===KEY){load();render()}if(e.key===STUDENT_KEY){loadStudents();renderStudents()}});
+const $=s=>document.querySelector(s),sq=c=>`<i class="sq" style="background:${c}"></i>`;
+const fd=(s,o)=>pd(s).toLocaleDateString('es-ES',o);
+function render(){
+ $('#add').hidden=!Auth.canEdit();
+ $('#lg').innerHTML=Object.entries(T).map(([k,t])=>`<button class="lg" data-k="${k}" aria-pressed="${!S.hid.has(k)}">${sq(t.c)}${t.n}</button>`).join('');
+ S.tab=='c'?cal():S.tab=='h'?hrs():school();
+ $('#v-cal').hidden=S.tab!='c';$('#v-hrs').hidden=S.tab!='h';$('#v-sch').hidden=S.tab!='s';
+ $('#t-cal').setAttribute('aria-selected',S.tab=='c');$('#t-hrs').setAttribute('aria-selected',S.tab=='h');$('#t-sch').setAttribute('aria-selected',S.tab=='s');
+ $('#layers').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l==S.layer));
+ if(S.sel)panel(S.sel)}
+function cal(){
+ const m=S.v=='m',c=S.cur;let st,n;
+ if(m){const f=new Date(c.getFullYear(),c.getMonth(),1);st=mon(f);const l=new Date(c.getFullYear(),c.getMonth()+1,0);n=Math.ceil((((mon(l)-st)/864e5)+7)/7)*7;
+  $('#ttl').textContent=cap(c.toLocaleDateString('es-ES',{month:'long',year:'numeric'}))}
+ else{st=mon(c);n=7;const e=add(st,6);$('#ttl').textContent=st.getDate()+' – '+e.getDate()+' '+e.toLocaleDateString('es-ES',{month:'long',year:'numeric'})}
+ $('#vw').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v==S.v));
+ let h=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].map(x=>`<div class="dh">${x}</div>`).join('');
+ const lim=m?4:99;
+ for(let i=0;i<n;i++){const d=add(st,i),s=iso(d);
+  const L=EV.filter(e=>e.date==s&&!S.hid.has(e.type)&&(S.layer=='all'||T[e.type].layer==S.layer)).sort((a,b)=>(!!b.a-!!a.a)||((a.start||'').localeCompare(b.start||''))||(T[b.type].a?1:0)-(T[a.type].a?1:0));
+  const L2=L.sort((a,b)=>(T[b.type].a?1:0)-(T[a.type].a?1:0)||(a.start||'').localeCompare(b.start||''));
+  h+=`<div class="day${m&&d.getMonth()!=c.getMonth()?' out':''}${s==TODAY?' today':''}"><div class="n">${d.getDate()}</div>`+
+  L2.slice(0,lim).map(e=>`<button type="button" class="chip${S.sel==e.id?' sel':''}" data-id="${e.id}">${sq(T[e.type].c)}<span>${e.start?e.start+' ':''}${esc(e.title)}</span></button>`).join('')+
+  (L2.length>lim?`<button class="more" data-w="${s}">+${L2.length-lim} más</button>`:'')+`</div>`}
+ const g=$('#grid');g.className='grid'+(m?'':' wk');g.innerHTML=h}
+function panel(id){
+ const e=EV.find(x=>x.id==id),p=$('#pn');if(!e){p.classList.remove('open');return}
+ S.sel=id;const t=T[e.type],d=dur(e);
+ const li=a=>a.map(x=>`<li style="--k:${t.c}">${esc(x)}</li>`).join('');
+ let b='';
+ if((e.type=='tut_ind'||e.type=='tut_grp')&&(e.participants||[]).length)b+=`<h3>${e.type=='tut_ind'?'Alumno/a':'Participantes'}</h3><ul>${li(e.participants)}</ul>`;
+ if(e.type=='evento'&&e.guests.length)b+=`<h3>Invitados</h3><ul>${li(e.guests)}</ul>`;
+ if(e.topics.length)b+=`<h3>${e.type=='tut_ind'?'Temas tratados con el alumno':e.type=='evento'?'Programa':'Temas tratados'}</h3><ul>${li(e.topics)}</ul>`;
+ else if(t.h)b+=`<p class="note" style="margin-top:18px">Sin temas registrados todavía.</p>`;
+ if(t.a)b+=`<p class="note" style="margin-top:18px">Calendario del alumnado del taller.</p>`;
+ p.innerHTML=`<button class="x" aria-label="Cerrar" data-close>×</button><span class="tag">${sq(t.c)}${t.n}</span><h2>${esc(e.title)}</h2>
+ <p class="meta">${cap(fd(e.date,{weekday:'long',day:'numeric',month:'long',year:'numeric'}))}${e.start?` · ${e.start}–${e.end} (${fh(d)} h)`:''}</p>${b}`+
+ (Auth.canEdit()?`<div class="acts"><button class="btn" data-edit>Editar</button><button class="btn d" data-del>Eliminar</button></div>`:'');
+ p.classList.add('open')}
+function closeP(){S.sel=null;$('#pn').classList.remove('open');if(S.tab=='c')cal()}
+function range(){const c=S.hc;
+ if(S.hm=='w'){const a=mon(c);return[iso(a),iso(add(a,6)),'Semana del '+a.getDate()+' de '+a.toLocaleDateString('es-ES',{month:'long'})]}
+ if(S.hm=='m'){return[iso(new Date(c.getFullYear(),c.getMonth(),1)),iso(new Date(c.getFullYear(),c.getMonth()+1,0)),cap(c.toLocaleDateString('es-ES',{month:'long',year:'numeric'}))]}
+ return[P0,P1,'Programa completo']}
+function hrs(){
+ const[a,b,lab]=range();$('#hl').textContent=lab;
+ $('#hm').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.h==S.hm));
+ $('#hp').hidden=$('#hn').hidden=S.hm=='t';
+ const inR=EV.filter(e=>e.date>=a&&e.date<=b),W=inR.filter(e=>T[e.type].h),done=W.filter(e=>e.date<=TODAY),plan=W.filter(e=>e.date>TODAY);
+ const sum=l=>l.reduce((s,e)=>s+dur(e),0),days=t=>inR.filter(e=>e.type==t).length;
+ $('#kp').innerHTML=`<div class="card"><div class="l">Horas trabajadas</div><div class="v">${fh(sum(done))} <small>h</small></div></div>
+ <div class="card"><div class="l">Horas previstas (por venir)</div><div class="v">${fh(sum(plan))} <small>h</small></div></div>
+ <div class="card"><div class="l">Vacaciones</div><div class="v">${days('vac_or')} <small>días</small></div></div>
+ <div class="card"><div class="l">Asuntos propios</div><div class="v">${days('asuntos')} <small>días</small></div></div>`;
+ const ty=Object.keys(T).filter(k=>T[k].h),tot=sum(W)||1;
+ $('#bd').innerHTML=ty.map(k=>{const x=sum(W.filter(e=>e.type==k));return`<div class="row">${sq(T[k].c)}<div>${T[k].n}<div class="b"><i style="width:${x/tot*100}%;background:${T[k].c}"></i></div></div><strong>${fh(x)} h</strong></div>`}).join('');
+ let bk=[];
+ if(S.hm=='t'){for(let d=pd(P0);iso(d)<=P1;d=new Date(d.getFullYear(),d.getMonth()+1,1)){const m=iso(d).slice(0,7);bk.push({l:d.toLocaleDateString('es-ES',{month:'short'}),f:e=>e.date.slice(0,7)==m})}}
+ else for(let d=pd(a);iso(d)<=b;d=add(d,1)){const s=iso(d);if(S.hm=='w'&&d.getDay()%6==0)continue;if(S.hm=='m'&&d.getDay()%6==0)continue;bk.push({l:S.hm=='w'?d.toLocaleDateString('es-ES',{weekday:'short'}):d.getDate(),f:e=>e.date==s})}
+ const vals=bk.map(x=>ty.map(k=>sum(W.filter(e=>e.type==k&&x.f(e)))));const mx=Math.max(1,...vals.map(v=>v.reduce((p,q)=>p+q,0)));
+ $('#ch-t').textContent={w:'Horas por día',m:'Horas por día',t:'Horas por mes'}[S.hm];
+ $('#ch').innerHTML=vals.map((v,i)=>{const t=v.reduce((p,q)=>p+q,0);return`<div class="col" title="${fh(t)} h"><div class="stk" style="height:${t/mx*100}%">${v.map((x,j)=>x?`<div style="height:${x/t*100}%;background:${T[ty[j]].c}"></div>`:'').join('')}</div></div>`}).join('');
+ $('#ax').innerHTML=bk.map(x=>`<span>${x.l}</span>`).join('')}
+function reportLabel(a,b){const x=pd(a),y=pd(b),D=n=>String(n).padStart(2,'0');if(a==b)return'Día '+x.getDate()+' de '+x.toLocaleDateString('es-ES',{month:'long',year:'numeric'});if(x.getFullYear()==y.getFullYear()&&x.getMonth()==y.getMonth())return`Del ${x.getDate()} al ${y.getDate()} de ${x.toLocaleDateString('es-ES',{month:'long',year:'numeric'})}`;return`Del ${D(x.getDate())}/${D(x.getMonth()+1)}/${x.getFullYear()} al ${D(y.getDate())}/${D(y.getMonth()+1)}/${y.getFullYear()}`}
+function reportDays(a,b){const out=[];for(let d=pd(a);iso(d)<=b;d=add(d,1))out.push(new Date(d));return out}
+function reportRows(list,detail=false){if(!list.length)return'<p class="empty">No hay registros en este periodo.</p>';return`<table><thead><tr><th>Fecha</th><th>Hora</th><th>Actividad</th><th>Destinatario/a</th><th>Estado</th></tr></thead><tbody>${list.map(e=>{const people=(e.participants||[]).join(', ')||(e.type=='tut_ind'?e.title:'—'),state=(e.type=='tut_ind'||e.type=='tut_grp')?(e.topics&&e.topics.length?'Desarrollada':'Pendiente de desarrollar'):'Registrada',extra=detail&&e.topics&&e.topics.length?`<div class="topics"><b>Contenido:</b> ${e.topics.map(esc).join(' · ')}</div>`:'',activity=e.type=='tut_ind'||e.type=='tut_grp'?T[e.type].n:(e.title.startsWith(T[e.type].n)?e.title:`${T[e.type].n} · ${e.title}`);return`<tr><td>${esc(fd(e.date,{day:'2-digit',month:'2-digit',year:'numeric'}))}</td><td>${esc(e.start?`${e.start}${e.end?'–'+e.end:''}`:'—')}</td><td><i class="dot" style="background:${T[e.type].c}"></i>${esc(activity)}${extra}</td><td>${esc(people)}</td><td>${state}</td></tr>`}).join('')}</tbody></table>`}
+function reportChart(days,ori){const vals=days.map(d=>ori.filter(e=>e.date==iso(d)&&T[e.type].h).reduce((s,e)=>s+dur(e),0)),max=Math.max(1,...vals);return`<div class="chartbox">${days.map((d,i)=>`<div class="chartcol"><div class="chartvalue">${fh(vals[i])}</div><div class="chartbar" style="height:${Math.max(2,vals[i]/max*100)}%"></div><div class="chartday">${d.getDate()}<small>${d.toLocaleDateString('es-ES',{weekday:'short'}).replace('.','')}</small></div></div>`).join('')}</div>`}
+function reportSchedule(days,program){return`<div class="agenda-grid">${days.map(d=>{const events=program.filter(e=>e.date==iso(d));return`<div class="agenda-day"><strong>${cap(d.toLocaleDateString('es-ES',{weekday:'long'}))}<small>${d.getDate()} ${d.toLocaleDateString('es-ES',{month:'short'}).replace('.','')}</small></strong>${events.length?events.map(e=>`<span><i class="dot" style="background:${T[e.type].c}"></i>${esc(e.title)}</span>`).join(''):'<em>Sin actividad registrada</em>'}</div>`}).join('')}</div>`}
+function createReport(){
+ const a=$('#r-from').value,b=$('#r-to').value,type=$('#r-type').value,detail=$('#r-detail').value=='detail',withChart=$('#r-chart').checked,withSchedule=$('#r-schedule').checked;
+ if(!a||!b||a>b){alert('Indica un periodo válido: la fecha final no puede ser anterior a la inicial.');return}
+ const days=reportDays(a,b),lab=reportLabel(a,b),list=EV.filter(e=>e.date>=a&&e.date<=b).sort((x,y)=>x.date.localeCompare(y.date)||(x.start||'').localeCompare(y.start||'')),ori=list.filter(e=>T[e.type].layer=='orientacion'),program=list.filter(e=>T[e.type].layer=='taller'),ind=ori.filter(e=>e.type=='tut_ind'),grp=ori.filter(e=>e.type=='tut_grp'),others=ori.filter(e=>e.type!='tut_ind'&&e.type!='tut_grp'),hours=ori.filter(e=>T[e.type].h).reduce((s,e)=>s+dur(e),0);
+ const title=type=='tutoring'?'Índice de Tutorías':type=='complete'?'Informe Completo de Actividad':'Informe de Actividad de Orientación';
+ const summary=Object.keys(T).filter(k=>T[k].layer=='orientacion').map(k=>({k,n:ori.filter(e=>e.type==k).length})).filter(x=>x.n).map(x=>`<li><i class="dot" style="background:${T[x.k].c}"></i>${esc(T[x.k].n)} <b>${x.n}</b></li>`).join('')||'<li>Sin actividad de orientación registrada.</li>';
+ const dashboard=type!='tutoring'?`<div class="cards"><div class="card blue"><small>Horas de orientación</small><b>${fh(hours)} h</b></div><div class="card purple"><small>Tutorías individuales</small><b>${ind.length}</b></div><div class="card pink"><small>Tutorías grupales</small><b>${grp.length}</b></div><div class="card slate"><small>Otras actuaciones</small><b>${others.length}</b></div></div><h2>Actividad de orientación registrada</h2><ul class="summary">${summary}</ul>${withChart?`<h2>Horas registradas por día</h2>${reportChart(days,ori)}`:''}`:'';
+ const tutorSection=`<h2>${type=='tutoring'?'Tutorías del periodo':'Índice de tutorías'}</h2>${reportRows([...ind,...grp].sort((x,y)=>x.date.localeCompare(y.date)||(x.start||'').localeCompare(y.start||'')),detail)}`;
+ const activitySection=type=='tutoring'?'':`<h2>Otras actuaciones de orientación</h2>${reportRows(others,detail)}`;
+ const scheduleSection=(withSchedule||type=='complete')?`<h2>Agenda del alumnado en el periodo</h2>${reportSchedule(days,program)}`:'';
+ const win=window.open('','_blank');if(!win){alert('El navegador ha bloqueado la ventana del informe. Permite las ventanas emergentes para esta agenda e inténtalo de nuevo.');return}
+ win.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(title)} · ${esc(lab)}</title><style>@page{size:A4;margin:16mm}*{box-sizing:border-box}body{background:#F3F6FA;color:#17212E;font:10pt "Segoe UI",Arial,sans-serif;margin:0}.report{width:min(180mm,calc(100% - 32px));margin:24px auto;background:white;padding:15mm;box-shadow:0 4px 24px rgba(30,50,70,.12)}h1{font-size:22pt;letter-spacing:-.04em;margin:0 0 3px;font-weight:700}.sub,.empty{color:#5D6B80}.sub{margin:0}.meta{display:flex;justify-content:space-between;gap:15px;margin:19px 0;padding:11px 13px;background:#F1F5F9;border-radius:8px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.card{border-radius:9px;padding:11px;color:#17212E}.card small{display:block;font-size:8.5pt}.card b{display:block;font-size:18pt;line-height:1.1;margin-top:4px}.blue{background:#E9F0FF}.purple{background:#F0EAFE}.pink{background:#FDEAF4}.slate{background:#EEF2F7}h2{font-size:12.5pt;margin:22px 0 9px;border-bottom:1px solid #CBD5E1;padding-bottom:5px}.summary{list-style:none;padding:0;margin:0;columns:2;gap:22px}.summary li{margin:6px 0}.dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}.summary b{float:right}table{width:100%;border-collapse:collapse;font-size:9pt}th{text-align:left;background:#EFF3F8;color:#334155}th,td{padding:7px 6px;border-bottom:1px solid #DCE3EC;vertical-align:top}.topics{font-size:8.2pt;color:#475569;margin-top:4px;line-height:1.4}.chartbox{height:142px;border-bottom:1px solid #CBD5E1;display:flex;align-items:flex-end;gap:5px;padding:0 4px}.chartcol{height:100%;flex:1;min-width:13px;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch}.chartbar{background:#6F82E8;border-radius:4px 4px 0 0;min-height:2px}.chartvalue{text-align:center;font-size:8pt;color:#5D6B80;margin-bottom:3px}.chartday{text-align:center;font-size:8pt;color:#5D6B80;margin-top:4px}.chartday small{display:block;font-size:7.5pt}.agenda-grid{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid #DCE3EC;border-radius:7px;overflow:hidden}.agenda-day{min-height:92px;padding:7px;border-right:1px solid #DCE3EC;border-bottom:1px solid #DCE3EC;font-size:8pt}.agenda-day:nth-child(7n){border-right:0}.agenda-day strong{display:block;font-size:8.5pt;margin-bottom:6px}.agenda-day strong small{display:block;color:#647084;font-weight:400}.agenda-day span{display:block;margin:4px 0;line-height:1.25}.agenda-day em{font-style:normal;color:#8A96A8;font-size:7.7pt}.print{margin:18px auto 0;display:block;padding:8px 12px;border:1px solid #94A3B8;background:#fff;border-radius:6px;cursor:pointer}@media print{body{background:white}.report{width:auto;margin:0;padding:0;box-shadow:none}.print{display:none}}@media(max-width:650px){.cards{grid-template-columns:repeat(2,1fr)}.agenda-grid{grid-template-columns:repeat(2,1fr)}.agenda-day:nth-child(7n){border-right:1px solid #DCE3EC}}</style></head><body><button class="print" onclick="window.print()">Imprimir / guardar en PDF</button><main class="report"><h1>${esc(title)}</h1><p class="sub">Agenda de Orientación · Escuela Taller Baessipo</p><div class="meta"><span><b>Periodo:</b> ${esc(lab)}</span><span><b>Fecha de emisión:</b> ${esc(fd(TODAY,{day:'2-digit',month:'2-digit',year:'numeric'}))}</span></div>${dashboard}${tutorSection}${activitySection}${scheduleSection}</main></body></html>`);win.document.close();rd.close()}
+function school(){
+ const special={
+  '2026-11-02':['No lectivo local','#BE5B57'],'2026-12-07':['Festivo','#BE5B57'],'2026-12-08':['Festivo','#BE5B57'],
+  '2026-12-23':['Vacaciones de Navidad','#3B82C4'],'2026-12-24':['Vacaciones de Navidad','#3B82C4'],'2026-12-25':['Vacaciones de Navidad','#3B82C4'],'2026-12-26':['Vacaciones de Navidad','#3B82C4'],'2026-12-27':['Vacaciones de Navidad','#3B82C4'],'2026-12-28':['Vacaciones de Navidad','#3B82C4'],'2026-12-29':['Vacaciones de Navidad','#3B82C4'],'2026-12-30':['Vacaciones de Navidad','#3B82C4'],'2026-12-31':['Vacaciones de Navidad','#3B82C4'],
+  '2027-01-01':['Vacaciones de Navidad','#3B82C4'],'2027-01-02':['Vacaciones de Navidad','#3B82C4'],'2027-01-03':['Vacaciones de Navidad','#3B82C4'],'2027-01-04':['Vacaciones de Navidad','#3B82C4'],'2027-01-05':['Vacaciones de Navidad','#3B82C4'],'2027-01-06':['Vacaciones de Navidad','#3B82C4'],'2027-01-07':['Vacaciones de Navidad','#3B82C4'],'2027-01-08':['Vacaciones de Navidad','#3B82C4'],
+  '2027-02-26':['No lectivo local','#BE5B57'],'2027-02-28':['Día de Andalucía','#BE5B57'],'2027-03-01':['Festivo trasladado','#BE5B57'],
+  '2027-03-22':['Vacaciones de Semana Santa','#E0A21B'],'2027-03-23':['Vacaciones de Semana Santa','#E0A21B'],'2027-03-24':['Vacaciones de Semana Santa','#E0A21B'],'2027-03-25':['Vacaciones de Semana Santa','#E0A21B'],'2027-03-26':['Vacaciones de Semana Santa','#E0A21B'],'2027-03-27':['Vacaciones de Semana Santa','#E0A21B'],'2027-03-28':['Vacaciones de Semana Santa','#E0A21B'],
+  '2027-05-03':['No lectivo local','#BE5B57']};
+ const names=['Noviembre','Diciembre','Enero','Febrero','Marzo','Abril','Mayo','Junio'];
+ const ym=[[2026,10],[2026,11],[2027,0],[2027,1],[2027,2],[2027,3],[2027,4],[2027,5]];
+ const one=([y,m],i)=>{const first=new Date(y,m,1),start=mon(first),last=new Date(y,m+1,0);let h=`<div class="card" style="padding:12px;box-shadow:none"><h3>${names[i]} de ${y}</h3><div class="grid" style="min-width:0;grid-template-columns:repeat(7,1fr)">${['L','M','X','J','V','S','D'].map(x=>`<div class="dh" style="padding:5px;text-align:center">${x}</div>`).join('')}`;
+ for(let d=start;d<=last||d.getDay()!=1;d=add(d,1)){const s=iso(d),x=special[s],out=d.getMonth()!=m;h+=`<div class="day${out?' out':''}" title="${x?x[0]:''}" style="min-height:42px;padding:4px;align-items:center;justify-content:center"><div class="n" style="${x?`background:${x[1]};color:#fff`:''}">${d.getDate()}</div></div>`}return h+'</div></div>'};
+ $('#school').innerHTML=`<div class="legend"><span class="tag">${sq('#BE5B57')}Festivos y no lectivos locales</span><span class="tag">${sq('#3B82C4')}Vacaciones de Navidad</span><span class="tag">${sq('#E0A21B')}Vacaciones de Semana Santa</span></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">${ym.map(one).join('')}</div><p class="note" style="margin-top:16px">Días no lectivos locales indicados: 3 de noviembre de 2026, 26 de febrero de 2027 y 3 de mayo de 2027.</p>`}
+
+// Formulario de actividad
+const dg=$('#dg'),rd=$('#rd'),sd=$('#sd');let editId=null;
+$('#f-type').innerHTML=Object.entries(T).map(([k,t])=>`<option value="${k}">${t.n}</option>`).join('');
+function tgl(){const k=$('#f-type').value,h=T[k].h,ind=k=='tut_ind',grp=k=='tut_grp';
+ $('#f-s').disabled=$('#f-e').disabled=!h;$('#gl').hidden=k!='evento';
+ $('#sl').hidden=!ind;$('#pl').hidden=!grp;$('#tl').hidden=ind;
+ $('#f-student').required=ind;$('#f-participants').required=grp;$('#f-title').required=!ind}
+$('#f-type').onchange=tgl;
+function openForm(e){
+ if(!Auth.canEdit()){alert('Solo la cuenta de administración puede registrar o modificar actividades.');return}
+ editId=e?e.id:null;$('#dgt').textContent=e?'Editar actividad':'Registrar actividad';
+ $('#f-type').value=e?e.type:'tut_ind';$('#f-date').value=e?e.date:(TODAY<P0?P0:TODAY);$('#f-s').value=e?e.start||'':'';$('#f-e').value=e?e.end||'':'';
+ const people=e?(e.participants||[]):[];
+ $('#f-student').value=e&&e.type=='tut_ind'?(people[0]||e.title):'';$('#f-participants').value=e&&e.type=='tut_grp'?people.join('\n'):'';
+ $('#f-title').value=e&&e.type!='tut_ind'?e.title:'';$('#f-g').value=e?(e.guests||[]).join('\n'):'';$('#f-t').value=e?(e.topics||[]).join('\n'):'';tgl();dg.showModal()}
+function saveActivity(){
+ if(!Auth.canEdit()){alert('Acción denegada: Tu cuenta tiene permisos de solo lectura.');return}
+ const k=$('#f-type').value,ln=s=>$('#'+s).value.split('\n').map(x=>x.trim()).filter(Boolean),h=T[k].h,ind=k=='tut_ind',grp=k=='tut_grp';
+ const participants=ind?ln('f-student'):grp?ln('f-participants'):[];
+ const title=ind?(participants[0]||''):$('#f-title').value.trim();
+ if(!$('#f-date').value||!title||(grp&&!participants.length)){alert(ind?'Indica la fecha y el nombre del alumno o alumna.':grp?'Indica la fecha, el título y al menos una persona participante.':'Indica al menos la fecha y el título de la actividad.');return}
+ const o={date:$('#f-date').value,type:k,title,participants,topics:ln('f-t'),guests:k=='evento'?ln('f-g'):[],start:h?$('#f-s').value:'',end:h?$('#f-e').value:''};
+ if(editId){Object.assign(EV.find(x=>x.id==editId),o)}else{o.id=Math.max(0,...EV.map(x=>x.id))+1;EV.push(o);S.sel=o.id;S.cur=pd(o.date)}
+ save();dg.close();render()}
+$('#fm').addEventListener('submit',e=>{e.preventDefault();saveActivity()});
+$('#cancel').onclick=()=>dg.close();
+$('#report').onclick=()=>{const[a,b]=range();$('#r-from').value=a;$('#r-to').value=b;$('#r-type').value='activity';$('#r-detail').value='summary';$('#r-chart').checked=true;$('#r-schedule').checked=false;rd.showModal()};
+$('#r-type').onchange=()=>{if($('#r-type').value=='complete')$('#r-schedule').checked=true};
+$('#rf').addEventListener('submit',e=>{e.preventDefault();createReport()});
+$('#r-cancel').onclick=()=>rd.close();
+
+$('#grid').onclick=ev=>{const t=ev.target.closest('button');if(!t)return;
+ if(t.dataset.id){S.sel=+t.dataset.id;cal();panel(S.sel)}
+ else if(t.dataset.w){S.v='w';S.cur=pd(t.dataset.w);render()}};
+$('#lg').onclick=ev=>{const t=ev.target.closest('button[data-k]');if(!t)return;S.hid.has(t.dataset.k)?S.hid.delete(t.dataset.k):S.hid.add(t.dataset.k);render()};
+$('#layers').onclick=ev=>{const t=ev.target.closest('button[data-l]');if(!t)return;const k=t.dataset.l;
+ S.layer=S.layer==k?'all':k;render()};
+$('#students').onclick=()=>{renderStudents();sd.showModal()};
+$('#sf').addEventListener('submit',e=>{
+ e.preventDefault();
+ if(!Auth.canEdit()){alert('Acción denegada: Tu cuenta tiene permisos de solo lectura.');return}
+ const n=$('#s-name').value.trim();if(!n){return}
+ if(STUDENTS.some(x=>x.localeCompare(n,'es',{sensitivity:'accent'})==0)){alert('Ese alumno o alumna ya está registrado/a.');return}
+ STUDENTS.push(n);saveStudents();$('#s-name').value='';renderStudents()});
+$('#s-close').onclick=()=>sd.close();
+$('#student-list').onclick=ev=>{
+ const t=ev.target.closest('button');if(!t)return;
+ if(!Auth.canEdit()){alert('Acción denegada: Tu cuenta tiene permisos de solo lectura.');return}
+ const i=+(t.dataset.studentEdit??t.dataset.studentDel);if(!Number.isInteger(i)||!STUDENTS[i])return;
+ if('studentEdit' in t.dataset){const n=prompt('Nombre y primer apellido:',STUDENTS[i]);if(n&&n.trim()){STUDENTS[i]=n.trim();saveStudents();renderStudents()}}
+ if('studentDel' in t.dataset&&confirm(`¿Eliminar a ${STUDENTS[i]} del listado provisional?`)){STUDENTS.splice(i,1);saveStudents();renderStudents()}};
+$('#pn').onclick=ev=>{const t=ev.target.closest('button');if(!t)return;
+ if('close' in t.dataset)closeP();
+ else if('edit' in t.dataset){if(!Auth.canEdit())return;const e=EV.find(x=>x.id==S.sel);if(e)openForm(e)}
+ else if('del' in t.dataset){if(!Auth.canEdit())return;const e=EV.find(x=>x.id==S.sel);if(e&&confirm('¿Eliminar esta actividad?')){EV=EV.filter(x=>x.id!=S.sel);save();S.sel=null;$('#pn').classList.remove('open');render()}}};
+$('#vw').onclick=ev=>{const t=ev.target.closest('button[data-v]');if(t){S.v=t.dataset.v;render()}};
+$('#hm').onclick=ev=>{const t=ev.target.closest('button[data-h]');if(t){S.hm=t.dataset.h;render()}};
+const step=(n,k)=>{const c=S[k],m=k=='cur'?S.v=='m':S.hm=='m';S[k]=m?new Date(c.getFullYear(),c.getMonth()+n,1):add(c,7*n);render()};
+$('#prev').onclick=()=>step(-1,'cur');$('#next').onclick=()=>step(1,'cur');$('#today').onclick=()=>{S.cur=new Date();render()};
+$('#hp').onclick=()=>step(-1,'hc');$('#hn').onclick=()=>step(1,'hc');
+$('#t-cal').onclick=()=>{S.tab='c';S.layer='all';render()};$('#t-hrs').onclick=()=>{S.tab='h';render()};$('#t-sch').onclick=()=>{S.tab='s';render()};
+$('#add').onclick=()=>openForm(null);
+document.addEventListener('keydown',e=>{if(e.key=='Escape'&&S.sel)closeP()});
+
+// Controladores de Login y Logout
+$('#auth-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const email = $('#auth-email').value;
+  const pass = $('#auth-pass').value;
+  const err = $('#auth-err');
+  if (Auth.login(email, pass)) {
+    err.hidden = true;
+    $('#auth-pass').value = '';
+  } else {
+    err.textContent = 'Correo electrónico o contraseña incorrectos.';
+    err.hidden = false;
+  }
+});
+$('#logout-btn').onclick = () => Auth.logout();
+
+// Carga e inicialización
+load();
+loadStudents();
+Auth.init();
+</script></body></html>
